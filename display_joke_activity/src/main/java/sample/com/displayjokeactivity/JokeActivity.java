@@ -1,25 +1,21 @@
-package com.udacity.gradle.builditbigger;
+package sample.com.displayjokeactivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import com.example.Joker;
-
-import sample.com.displayjokeactivity.JokeActivity;
+import android.widget.TextView;
 
 
-public class MainActivity extends ActionBarActivity {
-    Joker joker = new Joker();
+public class JokeActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.joke_activity_main);
+        String joke = getIntent().getStringExtra("SAMPLE_JOKE");
+        TextView jokeTextView = (TextView) findViewById(R.id.jokeTextView);
+        jokeTextView.setText(joke);
     }
 
 
@@ -44,14 +40,4 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void tellJoke(View view) {
-        String joke = joker.getJoke();
-        Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
-        Intent displayJokeIntent = new Intent(this, JokeActivity.class);
-        displayJokeIntent.putExtra("SAMPLE_JOKE", joke);
-        startActivity(displayJokeIntent);
-    }
-
-
 }
