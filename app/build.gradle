@@ -11,6 +11,15 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    productFlavors {
+        paid {
+            applicationId = "com.udacity.gradle.builditbigger.paid"
+        }
+        free {
+            applicationId = "com.udacity.gradle.builditbigger.free"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -21,8 +30,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:appcompat-v7:22.2.1'
     // Added for AdMob
-    compile 'com.google.android.gms:play-services:7.3.0'
+    freeCompile 'com.google.android.gms:play-services:7.5.0'
     compile project(':display_joke_activity')
 }
